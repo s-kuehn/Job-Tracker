@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import sqlite3
+import os
 
 app = Flask(__name__)
 
@@ -7,7 +8,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET','POST'])
 def home():
 	# create table if not already existing
-	conn = sqlite3.connect('calculations.db')
+	conn = sqlite3.connect(os.path.realpath('../jobs.db'))
 	c = conn.cursor()
 	c.execute("""CREATE TABLE IF NOT EXISTS joblist (
 				id INTEGER PRIMARY KEY,
@@ -32,7 +33,7 @@ def home():
 		special_requests = request.form['special_requests']
 
 		# Add row to sql table
-		conn = sqlite3.connect('calculations.db')
+		conn = sqlite3.connect(os.path.realpath('../jobs.db'))
 		c = conn.cursor()
 		c.execute("INSERT INTO joblist(project_name, description, due_date, shoot_date, purpose, budget, special_requests) VALUES("+"'"+project_name+"'"+", "+"'"+description+"'"+", "+"'"+due_date+"'"+", "+"'"+shoot_date+"'"+", "+"'"+purpose+"'"+", "+"'"+budget+"'"+", "+"'"+special_requests+"'"+")")
 		conn.commit()
@@ -42,7 +43,7 @@ def home():
 		return redirect('/submited')
 
 	# Print contents of sql table
-	conn = sqlite3.connect('calculations.db')
+	conn = sqlite3.connect(os.path.realpath('../jobs.db'))
 	c = conn.cursor()
 	c.execute("SELECT * FROM joblist")
 	items = c.fetchall()

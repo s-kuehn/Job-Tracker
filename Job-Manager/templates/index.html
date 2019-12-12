@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+	<h1>Job List</h1>
+	{% for job in jobs %}
+	<tr>
+		<td>{{ job }}%
+			<a href="/delete?id={{ job[0] }}" class="btn btn-danger rightAligned" value="Delete">DELETE</a>
+		</td>
+	</tr>
+	{% endfor %}
+</div>
+
+
+{% endblock %}
+
