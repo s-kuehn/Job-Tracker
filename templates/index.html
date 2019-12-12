@@ -7,7 +7,7 @@
 
 {% block body %}
 <div class="container">
-	<form>
+	<form action='/' method="post">
 	<div class="form-group">
 		<label>Name Of Project:</label>
 		<input name="project_name" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter name">
@@ -40,7 +40,7 @@
 		<textarea name="special_requests" class="form-control" placeholder="Special requests"></textarea>
 	</div>
 
-	<button type="submit" class="btn btn-primary">Submit</button>
+	<button name="submit" type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>
 
