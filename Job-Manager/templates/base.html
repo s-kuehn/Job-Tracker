@@ -11,7 +11,31 @@
 	{% block title %}{% endblock %}
 </head>
 <body>
-	{% block body %}{% endblock %}
+	<div class="d-flex" id="wrapper">
+
+	<!-- Sidebar -->
+		<div class="bg-dark" id="sidebar-wrapper">
+			<div class="sidebar-heading"></div>
+			<div class="list-group list-group-flush">
+				<a href="/dashboard" class="list-group-item list-group-item-action list-group-item-light bg-dark">Dashboard</a>
+				<a href="/joblist" class="list-group-item list-group-item-action list-group-item-light bg-dark">Job List</a>
+				<a href="/clientlist" class="list-group-item list-group-item-action list-group-item-light bg-dark">Client List</a>
+				<a href="/calendar" class="list-group-item list-group-item-action list-group-item-light bg-dark">Calendar</a>
+				<a href="/map" class="list-group-item list-group-item-action list-group-item-light bg-dark">Map</a>
+				<a href="messages" class="list-group-item list-group-item-action list-group-item-light bg-dark">Messages</a>
+			</div>
+		</div>
+
+	<!-- Navbar -->
+		<div id="page-content-wrapper">
+			<nav class="navbar navbar-dark bg-dark">
+				<a class="app-title navbar-brand col text-center" href="#">Job-Tracker</a>
+			</nav>
+
+			{% block body %}{% endblock %}
+
+	</div>
+</div>
 
 	<!-- jQuery CDN -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
