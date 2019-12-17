@@ -6,16 +6,70 @@
 
 
 {% block body %}
-<div class="container">
-	<h1>Job List</h1>
-	{% for job in jobs %}
-	<tr>
-		<td>{{ job }}%
-			<a href="/delete?id={{ job[0] }}" class="btn btn-danger rightAligned" value="Delete">DELETE</a>
-		</td>
-	</tr>
-	{% endfor %}
+
+<div class="d-flex" id="wrapper">
+
+<!-- Sidebar -->
+	<div class="bg-dark" id="sidebar-wrapper">
+		<div class="sidebar-heading"></div>
+		<div class="list-group list-group-flush">
+			<a href="#" class="list-group-item list-group-item-action list-group-item-light bg-dark">Dashboard</a>
+			<a href="#" class="list-group-item list-group-item-action list-group-item-light bg-dark">Job List</a>
+			<a href="#" class="list-group-item list-group-item-action list-group-item-light bg-dark">Client List</a>
+			<a href="#" class="list-group-item list-group-item-action list-group-item-light bg-dark">Calendar</a>
+			<a href="#" class="list-group-item list-group-item-action list-group-item-light bg-dark">Map</a>
+			<a href="#" class="list-group-item list-group-item-action list-group-item-light bg-dark">Messages</a>
+		</div>
+	</div>
+    <!-- /#sidebar-wrapper -->
+
+<!-- Job List -->
+
+<div id="page-content-wrapper">
+
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="app-title navbar-brand col text-center" href="#">Job-Tracker</a>
+	</nav>
+
+	<div class="container">
+		<div class="table-responsive-lg">
+			<h1 class="text-center">Job List</h1>
+			<table class="table table-hover table-dark">
+				<thead>
+					<tr>
+						<th scope="col">Project Name</th>
+						
+						<th scope="col">Due Date</th>
+						<th scope="col">Shoot Date</th>
+						
+						<th scope="col">Budget</th>
+						
+					</tr>
+				 </thead>
+
+				<tbody>
+					{% for job in jobs %}
+					<tr>
+						<td>{{ job[1] }}</td>
+						
+						<td>{{ job[3] }}</td>
+						<td>{{ job[4] }}</td>
+						
+						<td>{{ job[6] }}
+						
+							<a href="/delete?id={{ job[0] }}" class="btn btn-danger rightAligned" value="Delete">DELETE</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+					
+			</table>
+		</div>
+	</div>
+	</div>
 </div>
+
+<!-- End Job List -->
 
 
 {% endblock %}
